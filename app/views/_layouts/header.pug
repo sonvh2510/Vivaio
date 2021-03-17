@@ -146,28 +146,28 @@ header.header__1
                                             span.fal.fa-chevron-left 
                                             span.text.fs-14.fw-200.ml-1 Menu Principal
                                         .row.no-gutters.mega__row
-                                            .col-lg-3.mega__left
+                                            .col-md-3.mega__left
                                                 .mega__extra-menu
                                                     h2.fs-20.fw-500.mb-1 Navigate through products
                                                     ul.fs-14.fw-200
                                                         li 
-                                                            a(href="product-categories.html") Electronic safety
+                                                            a(href="product-categories.html" mega-target="mega-1") Electronic safety
                                                         li 
-                                                            a(href="product-categories.html") Networks
+                                                            a(href="product-categories.html" mega-target="mega-2") Networks
                                                         li 
-                                                            a(href="product-categories.html") Communication
+                                                            a(href="product-categories.html" mega-target="mega-3") Communication
                                                         li 
-                                                            a(href="product-categories.html") Energy
+                                                            a(href="product-categories.html" mega-target="mega-4") Energy
                                                 .mega__extra-menu
                                                     h2.fs-20.fw-500.mb-1 Find Solutions
                                                     ul.fs-14.fw-200
                                                         li
-                                                            a(href="solution-1.html")  Corporate Solutions
+                                                            a(href="solution-1.html"  mega-target="mega-5")  Corporate Solutions
                                                         li
-                                                            a(href="solution-2.html")  Homing Solutions
+                                                            a(href="solution-2.html"  mega-target="mega-6")  Homing Solutions
                                                         li
-                                                            a(href="solution-3.html")  Enegry Solutions
-                                            .col-lg-9.bg-gray.mega__right
+                                                            a(href="solution-3.html"  mega-target="mega-7")  Enegry Solutions
+                                            .col-md-9.bg-gray.mega__right.mega__product
                                                 .row 
                                                     .col-lg-8 
                                                         p.img 
@@ -181,9 +181,97 @@ header.header__1
                                                                         span.fal.fa-chevron-right.ml-1
                                                                 .product__img2
                                                                     img.lazyload.blur-up(data-src="/images/ap_360.png")
-
-                            li.has-mega
-                                a(href="where-to-find-form-filter.html") Where to find
+                                                .mega__listProduct(mega-menu="mega-1")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Electronic safety
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
+                                                .mega__listProduct(mega-menu="mega-2")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Networks
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
+                                                .mega__listProduct(mega-menu="mega-3")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Communication
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
+                                                .mega__listProduct(mega-menu="mega-4")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Energy
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
+                                                .mega__listProduct(mega-menu="mega-5")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Corporate Solutions
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
+                                                .mega__listProduct(mega-menu="mega-6")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Homing Solutions
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
+                                                .mega__listProduct(mega-menu="mega-7")
+                                                    .mega__listProductWrapper
+                                                        p.mega__back-link
+                                                            span.fal.fa-chevron-left
+                                                            span.text.fs-14.fw-200.ml-1 Enegry Solutions
+                                                        .row
+                                                            -for(let i = 0; i < 15; i++)
+                                                                .mega__itemProduct 
+                                                                    a.mega__itemProductLink(href="") 
+                                                                        .mega__itemProductImg 
+                                                                            img(src="https://backend.intelbras.com/sites/default/files/styles/medium/public/integration/xbp_400_hd_persp_esq.png", alt="") 
+                                                                        .mega__itemProductText 
+                                                                            span Cooperate Wi-Fi
 
                             li.has-mega
                                 a(href="#") Support
@@ -331,6 +419,7 @@ header.header__1
                                                             li 
                                                                 a(href="institutional-sustainability.html") Product Discard
                                                                     span.fal.fa-chevron-right.ml-1
+
                             li.has-mega
                                 a(href="#") About Us
                                     span.fal.fa-chevron-down

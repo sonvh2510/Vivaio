@@ -6,7 +6,7 @@ import { copyFonts } from './copy';
 import { renderHTML } from './render';
 import { cssTask, jsTask } from './main';
 import { jsCore, cssCore } from './core';
-import { injectTask } from './inject';
+// import { injectTask } from './inject';
 
 const imageChangeTask = (path, stats) => {
 	const filePathnameGlob = path.replace(/[\/\\]/g, '/');
@@ -37,7 +37,7 @@ export const serve = () => {
 		},
 		port: 8000,
 	});
-	watch('app/views/_**/**.pug', series(injectTask)).on(
+	watch('app/views/_**/**.pug').on(
 		'change',
 		(path, stats) => {
 			console.log(`Files changed: '${path}'`);
@@ -46,7 +46,7 @@ export const serve = () => {
 		},
 	);
 
-	watch(['app/*.pug'], series(injectTask)).on('change', (path, stats) => {
+	watch(['app/*.pug']).on('change', (path, stats) => {
 		console.log(`Files changed: '${path}'`);
 		let pageName;
 		let glob;
@@ -64,7 +64,7 @@ export const serve = () => {
 		return renderHTML(glob);
 	});
 
-	watch(['app/views/**/**.pug', '!app/views/_**/**.pug'], series(injectTask)).on(
+	watch(['app/views/**/**.pug', '!app/views/_**/**.pug']).on(
 		'change',
 		(path, stats) => {
 			console.log(`Files changed: '${path}'`);

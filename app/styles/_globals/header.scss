@@ -143,12 +143,17 @@
             li{
                 a{
                     color: #2b2b2b;
-                    padding: 18px 20px 15px 0;
+                    padding: 15px 20px 15px 0;
                     display: block;
                     span{
                         margin-left: 10px;
-                        font-size: 1.2rem;
+                        font-size: 1.6rem;
                         color: var(--main)
+                    }
+                    &:hover{
+                        .text{
+                            text-decoration: underline;
+                        }
                     }
                 }
 
@@ -160,7 +165,7 @@
                     background: #fff;
                     width: 1440px;
                     left: 50%;
-                    z-index: 555;
+                    z-index: 1000;
                     transform: translateX(-50%);
                     box-shadow: 0 2px 4px map-get($color, silver);
                     border-top: 1px solid map-get($color, silver);
@@ -193,6 +198,97 @@
                         }
                         .mega__left{
                             padding-left: 0;
+                            padding-right: 0;
+                        }
+                        .mega__right{
+                            position: relative;
+                            &.mega__product{
+                                >.row:first-child{
+                                    @media (max-width: 1024.98px) {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            >.mega__listProduct {
+                                position: absolute;
+                                padding: 40px 0;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background-color: #f5f5f5;
+                                z-index: 2;
+                                max-height: 100%;
+                                display: none;
+                                .mega__listProductWrapper{
+                                    height: 100%;
+                                    overflow-y: auto;
+                                    overflow-x: hidden;
+                                    padding: 0 20px;
+                                    &::-webkit-scrollbar {
+                                        width: 2px;
+                                        background: #f4f4f4;
+                                    }
+                                    &::-webkit-scrollbar-thumb {
+                                        width: 2px;
+                                        background: map-get($color, main);
+                                    }
+                                }
+                                .mega__itemProduct {
+                                    -ms-flex: 0 0 20%;
+                                    flex: 0 0 20%;
+                                    max-width: 20%;
+                                    border-bottom: 2px solid #f4f4f4;
+                                    @media (min-width: 1200px) {
+                                        -ms-flex: 0 0 (100% / 6);
+                                        flex: 0 0 (100% / 6);
+                                        max-width: (100% / 6);
+                                    }
+                                    .mega__itemProductLink{
+                                        padding: 10px;
+                                    }
+                                    @media (min-width: 1025px) {
+                                        &:hover{
+                                            background: white;
+                                            border-bottom: 2px solid map-get($color, main);
+                                        }
+                                    }
+                                }
+                                @media (max-width: 1024.98px) {
+                                    display: none;
+                                    padding: 20px 0;
+                                    background: white;
+                                    .mega__listProductWrapper{
+                                        padding: 0 10px;
+                                    }
+                                    .mega__itemProduct{
+                                        -ms-flex: 0 0 100%;
+                                        flex: 0 0 100%;
+                                        max-width: 100%;
+                                        border-bottom: 0;
+                                        .mega__itemProductLink{
+                                            padding: 15px 10px;
+                                            display: flex;
+                                            align-items: center;
+                                            &:after{
+                                                font-family: 'Font Awesome 5 Pro';
+                                                font-weight: 300;
+                                                content: "\f054";
+                                                margin-left: auto;
+                                            }
+                                        }
+                                        .mega__itemProductImg{
+                                            display: none;  
+                                        }
+                                        .mega__itemProductText{
+                                            span{
+                                                margin-left: 0;
+                                                color: #2b2b2b;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     .mega__link{
@@ -209,6 +305,34 @@
                                 font-size: 1.5rem;
                                 padding: 10px 0;
                                 height: auto;
+                                &:hover{
+                                    background-color: #f5f5f5;
+                                }
+                            }
+                        }
+                        [mega-target]{
+                            display: flex;
+                            align-items: center;
+                            padding-right: 20px;
+                            &:after{
+                                font-family: 'Font Awesome 5 Pro';
+                                font-weight: 300;
+                                content: "\f054";
+                                margin-left: auto;
+                                color: map-get($color, main);
+                                font-size: 10px;
+                                opacity: 0;
+                            }
+                            &.active{
+                                background: #f4f4f4;
+                                &:after{
+                                    opacity: 1;
+                                }
+                            }
+                            @media (max-width: 1024.98px) {
+                                &:after{
+                                    opacity: 1;
+                                }
                             }
                         }
                     }
@@ -221,6 +345,7 @@
                                     display: flex;
                                     height: auto!important;
                                     align-items: center;
+                                    padding: 15px 20px;
                                 }
                                 .product__caption{
                                     width: 50%;
@@ -311,7 +436,7 @@
                 }
             }
         }
-        @media(max-width: 767.98px){
+        @media (max-width: 1024.98px) {
             height: auto;
             .toggle__menu-wrap{
                 display: none;
@@ -343,7 +468,7 @@
                             top: 0;
                             box-shadow: none;
                             padding: 2rem 0;
-                            max-height: 100%;
+                            height: 100%;
                             &:before{
                                 display: none;
                             }
@@ -370,6 +495,11 @@
                             }
                             &.mega__1{
                                 .mega__right{
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    height: 100%;
+                                    padding: 0px 10px!important;
                                     display: none;
                                 }
                             }
