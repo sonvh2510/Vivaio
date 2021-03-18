@@ -211,7 +211,6 @@
                             }
                             >.mega__listProduct {
                                 position: absolute;
-                                padding: 40px 0;
                                 top: 0;
                                 left: 0;
                                 width: 100%;
@@ -224,7 +223,7 @@
                                     height: 100%;
                                     overflow-y: auto;
                                     overflow-x: hidden;
-                                    padding: 0 20px;
+                                    padding: 40px 20px;
                                     &::-webkit-scrollbar {
                                         width: 2px;
                                         background: #f4f4f4;
@@ -251,6 +250,39 @@
                                         &:hover{
                                             background: white;
                                             border-bottom: 2px solid map-get($color, main);
+                                        }
+                                    }
+                                }
+                                .mega__itemSolution{
+                                    padding: 10px 100px;
+                                    -ms-flex: 0 0 100%;
+                                    flex: 0 0 100%;
+                                    max-width: 100%;
+                                    
+                                    .mega__itemProductImg{
+                                        max-height: 500px;
+                                        display: block;
+                                        margin-bottom: 25px;
+                                    }
+                                    .mega__itemProductText{
+                                        span{
+                                            margin-left: 0;
+                                            font-weight: 400;
+                                            font-size: 2rem;
+                                            color: #2b2b2b;
+                                        }
+                                    }
+                                    .mega__itemProductSubText{
+                                        margin-top: 20px;
+                                        span{
+                                            margin-left: 0;
+                                            font-weight: 300;
+                                            font-size: 1.6rem;
+                                        }
+                                        .fal{
+                                            font-size: 10px;
+                                            display: inline-block;
+                                            margin-left: 10px;
                                         }
                                     }
                                 }
@@ -285,6 +317,35 @@
                                                 margin-left: 0;
                                                 color: #2b2b2b;
                                             }
+                                        }
+                                    }
+                                    .mega__itemSolution{
+                                        padding: 0 10px;
+                                        -ms-flex: 0 0 100%;
+                                        flex: 0 0 100%;
+                                        max-width: 100%;
+
+                                        .mega__itemProductLink{
+                                            padding: 15px 10px;
+                                            display: flex;
+                                            align-items: center;
+                                            &:after{
+                                                font-family: 'Font Awesome 5 Pro';
+                                                font-weight: 300;
+                                                content: "\f054";
+                                                margin-left: auto;
+                                            }
+                                        }
+                                        .mega__itemProductText{
+                                            span{
+                                                font-size: 1.6rem;
+                                            }
+                                        }
+                                        .mega__itemProductImg{
+                                            display: none;
+                                        }
+                                        .mega__itemProductSubText{
+                                            display: none;
                                         }
                                     }
                                 }
