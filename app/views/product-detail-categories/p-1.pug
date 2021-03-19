@@ -18,7 +18,27 @@
 							span.btn__text View Gallery
 							span.btn__icon--right.fal.fa-chevron-right
 			.col-md-7
-				.banner__img
+				.banner__img.banner__img--showSlider
 					img.object-cover.lazyload.blur-up(data-src='/images/banners/2.jpg' alt='')
+		.row.indexBannerPupup.d-none
+			.col 
+				.slide
+					.swiper-container.gallery-top
+						.swiper-wrapper
+							.swiper-slide
+								.box-img
+									.indexSectionZoom(style='background:url(/images/WD_Purple_SurveillanceBigsize.png')
+										img(src='/images/WD_Purple_SurveillanceBigsize.png' alt='')
+					.swiper-navigation 
+						.swiper-prev 
+							i.fal.fa-chevron-left 
+						.swiper-next 
+							i.fal.fa-chevron-right
+					.closePupup 
+						i.fal.fa-times
+				.swiper-container.gallery-thumbs
+					.swiper-wrapper 
+						.swiper-slide
+							img.object-cover(src='/images/WD_Purple_Surveillance.png' alt='')
 		
 			

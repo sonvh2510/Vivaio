@@ -72,7 +72,6 @@ class Tab {
 	}
 
 	hideAllContent() {
-		console.log(this.contentList);
 		this.contentList.forEach((content) => {
 			content.style.display = 'none';
 		});

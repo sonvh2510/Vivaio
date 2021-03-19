@@ -1,53 +1,63 @@
-.header__1{
-    @media(max-width: 767.98px){
+.header__1 {
+    @media(max-width: 767.98px) {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 999;
     }
-    ul{
+
+    ul {
         list-style: none;
         padding-left: 0;
     }
-    .isvg{
+
+    .isvg {
         vertical-align: middle;
         line-height: 1;
         width: 16px;
     }
-    .header__backdrop{
+
+    .header__backdrop {
         position: fixed;
         z-index: 444;
         top: 0;
         width: 100vw;
         height: 100vh;
         content: "";
-        background-color: hsla(0,0%,100%,.75);
+        background-color: hsla(0, 0%, 100%, .75);
         display: none;
     }
-    .pageContainer{
+
+    .pageContainer {
         z-index: 555;
         position: relative;
     }
-    .header__top{
+
+    .header__top {
         color: #5e6573;
         font-size: 1.5rem;
         font-weight: 300;
         padding: 5px 0 6px;
-        @media(max-width: 767.98px){
+
+        @media(max-width: 767.98px) {
             display: none;
         }
-        a{
+
+        a {
             color: #5e6573;
         }
-        .header__helper-extra-menu{
+
+        .header__helper-extra-menu {
             position: relative;
         }
     }
-    .header__language{
+
+    .header__language {
         position: relative;
         z-index: 555;
-        .header__language-list{
+
+        .header__language-list {
             position: absolute;
             top: calc(100% + 5px);
             right: 0;
@@ -56,110 +66,135 @@
             border: 1px solid #ddd;
             background-color: #fff;
             z-index: 6;
-            .header__language-item{
-                a{
+
+            .header__language-item {
+                a {
                     display: flex;
                     padding: 10px 0;
-                    .text{
+
+                    .text {
                         margin-left: 5px;
                     }
                 }
-                + .header__language-item{
+
+                +.header__language-item {
                     border-top: 1px solid #ddd
                 }
             }
         }
     }
-    .header__logo{
+
+    .header__logo {
         width: 144px;
         height: 30px;
-        svg{
+
+        svg {
             width: 100%;
             height: 100%;
         }
-        @media(max-width: 767.98px){
+
+        @media(max-width: 767.98px) {
             width: 83px;
             height: 48px;
             position: absolute;
             left: 50%;
             top: 50%;
-            transform: translate(-50%, -50%);        
+            transform: translate(-50%, -50%);
         }
     }
-    .header__main{
+
+    .header__main {
         border-bottom: 1px solid map-get($color, silver);
         position: relative;
         height: 55px;
-        @media(max-width: 767.98px){
+
+        @media(max-width: 767.98px) {
             align-items: center;
         }
     }
-    .header__main-menu{
+
+    .header__main-menu {
         height: 100%;
-        .toggle-mobile-btn{
+
+        .toggle-mobile-btn {
             border: 0;
             display: flex;
             align-items: center;
             background: none;
             outline: none;
-            .icon-close{
+
+            .icon-close {
                 display: none;
             }
-            &.active{
-                span{
+
+            &.active {
+                span {
                     display: none;
                 }
-                .icon-close{
+
+                .icon-close {
                     display: block;
                 }
             }
         }
-        .toggle__menu-wrap{
-            &>ul>li>a{
+
+        .toggle__menu-wrap {
+            &>ul>li>a {
                 height: 55px;
             }
-            .header__helper-extra-menu{
+
+            .header__helper-extra-menu {
                 border-top: 1px solid #f1f1f1;
                 margin: 0 10px;
                 padding: 0;
             }
-            .header__language{
+
+            .header__language {
                 padding: 0 10px;
-                .header__language-list{
+
+                .header__language-list {
                     left: 10px;
                     width: 150px;
-                    a{
+
+                    a {
                         color: #5e6573;
                     }
                 }
             }
-            @media(min-width: 768px){
-                .header__helper-extra-menu,.header__language{
-                    display: none!important;
+
+            @media(min-width: 768px) {
+
+                .header__helper-extra-menu,
+                .header__language {
+                    display: none !important;
                 }
             }
         }
-        ul{
-            li{
-                a{
+
+        ul {
+            li {
+                a {
                     color: #2b2b2b;
                     padding: 15px 20px 15px 0;
                     display: block;
-                    span{
+
+                    span {
                         margin-left: 10px;
                         font-size: 1.6rem;
                         color: var(--main)
                     }
-                    &:hover{
-                        .text{
+
+                    &:hover {
+                        .text {
                             text-decoration: underline;
                         }
                     }
                 }
 
             }
-            .has-mega{
-                .mega__wrap{
+
+            .has-mega {
+                .mega__wrap {
                     position: absolute;
                     top: 100%;
                     background: #fff;
@@ -169,17 +204,22 @@
                     transform: translateX(-50%);
                     box-shadow: 0 2px 4px map-get($color, silver);
                     border-top: 1px solid map-get($color, silver);
-                    display: none;
-                    .bg-gray{
+                    opacity: 0;
+                    pointer-events: none;
+
+                    .bg-gray {
                         background: #f5f5f5;
                     }
-                    .mega__back-link{
+
+                    .mega__back-link {
                         display: none;
                     }
-                    @media(max-width: 1440px){
+
+                    @media(max-width: 1440px) {
                         width: 100vw;
                     }
-                    &:before{
+
+                    &:before {
                         content: '';
                         width: 500px;
                         height: 100%;
@@ -188,27 +228,33 @@
                         top: 0;
                         position: absolute;
                         z-index: -1;
-                        @media(max-width: 1400px){
+
+                        @media(max-width: 1400px) {
                             width: 250px;
                         }
                     }
-                    .mega__row{
-                        &>div{
+
+                    .mega__row {
+                        &>div {
                             padding: 3rem 2rem;
                         }
-                        .mega__left{
+
+                        .mega__left {
                             padding-left: 0;
                             padding-right: 0;
                         }
-                        .mega__right{
+
+                        .mega__right {
                             position: relative;
-                            &.mega__product{
-                                >.row:first-child{
+
+                            &.mega__product {
+                                >.row:first-child {
                                     @media (max-width: 1024.98px) {
                                         display: none;
                                     }
                                 }
                             }
+
                             >.mega__listProduct {
                                 position: absolute;
                                 top: 0;
@@ -219,132 +265,156 @@
                                 z-index: 2;
                                 max-height: 100%;
                                 display: none;
-                                .mega__listProductWrapper{
+
+                                .mega__listProductWrapper {
                                     height: 100%;
                                     overflow-y: auto;
                                     overflow-x: hidden;
                                     padding: 40px 20px;
+
                                     &::-webkit-scrollbar {
                                         width: 2px;
                                         background: #f4f4f4;
                                     }
+
                                     &::-webkit-scrollbar-thumb {
                                         width: 2px;
                                         background: map-get($color, main);
                                     }
                                 }
+
                                 .mega__itemProduct {
                                     -ms-flex: 0 0 20%;
                                     flex: 0 0 20%;
                                     max-width: 20%;
                                     border-bottom: 2px solid #f4f4f4;
+
                                     @media (min-width: 1200px) {
                                         -ms-flex: 0 0 (100% / 6);
                                         flex: 0 0 (100% / 6);
                                         max-width: (100% / 6);
                                     }
-                                    .mega__itemProductLink{
+
+                                    .mega__itemProductLink {
                                         padding: 10px;
                                     }
+
                                     @media (min-width: 1025px) {
-                                        &:hover{
+                                        &:hover {
                                             background: white;
                                             border-bottom: 2px solid map-get($color, main);
                                         }
                                     }
                                 }
-                                .mega__itemSolution{
+
+                                .mega__itemSolution {
                                     padding: 10px 100px;
                                     -ms-flex: 0 0 100%;
                                     flex: 0 0 100%;
                                     max-width: 100%;
-                                    
-                                    .mega__itemProductImg{
+
+                                    .mega__itemProductImg {
                                         max-height: 500px;
                                         display: block;
                                         margin-bottom: 25px;
                                     }
-                                    .mega__itemProductText{
-                                        span{
+
+                                    .mega__itemProductText {
+                                        span {
                                             margin-left: 0;
                                             font-weight: 400;
                                             font-size: 2rem;
                                             color: #2b2b2b;
                                         }
                                     }
-                                    .mega__itemProductSubText{
+
+                                    .mega__itemProductSubText {
                                         margin-top: 20px;
-                                        span{
+
+                                        span {
                                             margin-left: 0;
                                             font-weight: 300;
                                             font-size: 1.6rem;
                                         }
-                                        .fal{
+
+                                        .fal {
                                             font-size: 10px;
                                             display: inline-block;
                                             margin-left: 10px;
                                         }
                                     }
                                 }
+
                                 @media (max-width: 1024.98px) {
                                     display: none;
                                     padding: 20px 0;
                                     background: white;
-                                    .mega__listProductWrapper{
+
+                                    .mega__listProductWrapper {
                                         padding: 0 10px;
                                     }
-                                    .mega__itemProduct{
+
+                                    .mega__itemProduct {
                                         -ms-flex: 0 0 100%;
                                         flex: 0 0 100%;
                                         max-width: 100%;
                                         border-bottom: 0;
-                                        .mega__itemProductLink{
+
+                                        .mega__itemProductLink {
                                             padding: 15px 10px;
                                             display: flex;
                                             align-items: center;
-                                            &:after{
+
+                                            &:after {
                                                 font-family: 'Font Awesome 5 Pro';
                                                 font-weight: 300;
                                                 content: "\f054";
                                                 margin-left: auto;
                                             }
                                         }
-                                        .mega__itemProductImg{
-                                            display: none;  
+
+                                        .mega__itemProductImg {
+                                            display: none;
                                         }
-                                        .mega__itemProductText{
-                                            span{
+
+                                        .mega__itemProductText {
+                                            span {
                                                 margin-left: 0;
                                                 color: #2b2b2b;
                                             }
                                         }
                                     }
-                                    .mega__itemSolution{
+
+                                    .mega__itemSolution {
                                         padding: 0 10px;
                                         -ms-flex: 0 0 100%;
                                         flex: 0 0 100%;
                                         max-width: 100%;
 
-                                        .mega__itemProductLink{
+                                        .mega__itemProductLink {
                                             padding: 15px 10px;
                                             display: flex;
                                             align-items: center;
-                                            &:after{
+
+                                            &:after {
                                                 font-family: 'Font Awesome 5 Pro';
                                                 font-weight: 300;
                                                 content: "\f054";
                                                 margin-left: auto;
                                             }
                                         }
-                                        .mega__itemProductText{
-                                            span{
+
+                                        .mega__itemProductText {
+                                            span {
                                                 font-size: 1.6rem;
                                             }
                                         }
-                                        .mega__itemProductImg{
+
+                                        .mega__itemProductImg {
                                             display: none;
                                         }
-                                        .mega__itemProductSubText{
+
+                                        .mega__itemProductSubText {
                                             display: none;
                                         }
                                     }
@@ -352,30 +422,36 @@
                             }
                         }
                     }
-                    .mega__link{
-                        a{
+
+                    .mega__link {
+                        a {
                             color: var(--main);
                         }
                     }
-                    .mega__extra-menu{
+
+                    .mega__extra-menu {
                         margin-bottom: 2rem;
-                        h2{
-                        }
-                        ul{
-                            a{
+
+                        h2 {}
+
+                        ul {
+                            a {
                                 font-size: 1.5rem;
                                 padding: 10px 0;
                                 height: auto;
-                                &:hover{
+
+                                &:hover {
                                     background-color: #f5f5f5;
                                 }
                             }
                         }
-                        [mega-target]{
+
+                        [mega-target] {
                             display: flex;
                             align-items: center;
                             padding-right: 20px;
-                            &:after{
+
+                            &:after {
                                 font-family: 'Font Awesome 5 Pro';
                                 font-weight: 300;
                                 content: "\f054";
@@ -384,39 +460,46 @@
                                 font-size: 10px;
                                 opacity: 0;
                             }
-                            &.active{
+
+                            &.active {
                                 background: #f4f4f4;
-                                &:after{
+
+                                &:after {
                                     opacity: 1;
                                 }
                             }
+
                             @media (max-width: 1024.98px) {
-                                &:after{
+                                &:after {
                                     opacity: 1;
                                 }
                             }
                         }
                     }
-                    &.mega__1{
-                        .mega__left{
-                        }
-                        .mega__right{
-                            .product{
-                                .product__url{
+
+                    &.mega__1 {
+                        .mega__left {}
+
+                        .mega__right {
+                            .product {
+                                .product__url {
                                     display: flex;
-                                    height: auto!important;
+                                    height: auto !important;
                                     align-items: center;
                                     padding: 15px 20px;
                                 }
-                                .product__caption{
+
+                                .product__caption {
                                     width: 50%;
                                     max-width: 50%;
                                     flex: 0 0 50%;
-                                    h4{
+
+                                    h4 {
                                         font-size: 1.6rem;
                                     }
                                 }
-                                .product__img2{
+
+                                .product__img2 {
                                     width: 50%;
                                     max-width: 50%;
                                     flex: 0 0 50%;
@@ -424,14 +507,17 @@
                             }
                         }
                     }
-                    &.mega__2{
-                        .mega__2-item{
-                            a{
+
+                    &.mega__2 {
+                        .mega__2-item {
+                            a {
                                 padding-top: 0;
-                                &:hover{
-                                    .img{
+
+                                &:hover {
+                                    .img {
                                         position: relative;
-                                        &::before{
+
+                                        &::before {
                                             content: '';
                                             height: 3px;
                                             width: 100%;
@@ -444,64 +530,186 @@
                                 }
                             }
                         }
-                        .text_bottom{
-                            a{
+
+                        .text_bottom {
+                            a {
                                 color: var(--main)
                             }
                         }
-                        .mega__right{
-                            .mega__2-item{
-                                a{
+
+                        .mega__right {
+                            .mega__2-item {
+                                a {
                                     padding-left: 15px;
                                 }
                             }
                         }
                     }
-                    &.mega__3{
-                        .mega__service{
-                            span{
+
+                    &.mega__3 {
+                        .mega__service {
+                            span {
                                 margin-left: 0;
                             }
-                            .text{
+
+                            .text {
                                 color: #5e6573;
                                 font-size: 1.5rem;
                                 margin: 0 1rem;
                             }
                         }
-                        .mega__right{
+
+                        .mega__right {
                             padding-left: 5rem;
-                            ul{
-                                li{
-                                    + li{
+
+                            ul {
+                                li {
+                                    +li {
                                         border-top: 1px solid #d9d9d9
                                     }
-                                    a{
+
+                                    a {
                                         color: var(--main)
                                     }
                                 }
                             }
                         }
                     }
-                    &.mega__4{
-                        .mega__right{
-                            padding-left: 5rem;
+
+                    &.mega__4 {
+                        .mega__right {
+                            padding-left: 7rem;
+                            padding-right: 6rem;
+
+                            .mega__newsSlide {
+                                max-width: 300px;
+                                width: 100%;
+                                position: relative;
+
+                                .product__url {
+                                    background: #fff;
+                                    padding: 3rem 2rem 2rem;
+                                    min-height: 250px;
+
+
+                                    .mega__newsTitle {
+                                        color: var(--main);
+                                        padding-bottom: 1.5rem;
+                                        position: relative;
+                                        margin-bottom: 1.5rem;
+
+                                        &:before {
+                                            content: '';
+                                            width: 3rem;
+                                            height: 2px;
+                                            border-radius: 2px;
+                                            background: var(--main);
+                                            position: absolute;
+                                            bottom: 0;
+                                            left: 0;
+                                        }
+                                    }
+
+                                    .mega__newsDesc {
+                                        i {
+                                            font-size: 1.1rem;
+                                            color: var(--main);
+                                            margin-left: 1rem;
+                                        }
+                                    }
+                                }
+
+                                .swiper-navigation {
+                                    &>div {
+                                        width: 40px;
+                                        height: 40px;
+                                        border-radius: 50%;
+                                        box-shadow: 0 0 1px 1px rgba(black, .1);
+                                        background: #fff;
+                                        line-height: 40px;
+                                        text-align: center;
+                                        font-size: 1.2rem;
+                                        transition: .4s all;
+                                        cursor: pointer;
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        z-index: 55;
+                                        outline: none;
+
+                                        &.swiper-next {
+                                            right: -20px;
+                                        }
+
+                                        &.swiper-prev {
+                                            left: -20px;
+                                        }
+
+                                        &.swiper-button-disabled {
+                                            opacity: 0;
+                                            pointer-events: none;
+                                        }
+
+                                        &:hover {
+                                            color: var(--main)
+                                        }
+                                    }
+                                }
+
+                                .swiper-pagination {
+                                    padding: 1rem;
+                                    position: relative;
+                                    // text-align: left;
+
+                                    .swiper-pagination-bullet {
+                                        width: 5px;
+                                        height: 5px;
+                                        outline: none;
+                                        border-radius: 50%;
+
+                                        +.swiper-pagination-bullet {
+                                            margin-left: 2rem;
+                                        }
+
+                                        &.swiper-pagination-bullet-active {
+                                            background: #000;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .mega__newsViewMore {
+                                a {
+                                    color: var(--main);
+
+                                    i {
+                                        font-size: 1.2rem;
+                                        margin-left: .5rem;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
-                @media(min-width: 768px){
-                    &:hover{
-                        .mega__wrap{
-                            display: block;
+
+                @media(min-width: 768px) {
+                    &:hover {
+                        .mega__wrap {
+                            opacity: 1;
+                            pointer-events: initial;
                         }
                     }
                 }
             }
         }
+
         @media (max-width: 1024.98px) {
             height: auto;
-            .toggle__menu-wrap{
+
+            .toggle__menu-wrap {
                 display: none;
-                &.show{
+
+                &.show {
                     display: block;
                     position: fixed;
                     z-index: 888;
@@ -511,68 +719,84 @@
                     height: calc(100vh - 55px);
                     background: #fff;
                 }
-                >ul{
+
+                >ul {
                     padding: 0 10px;
                     display: block;
-                    >li>a{
+
+                    >li>a {
                         position: relative;
-                        span{
+
+                        span {
                             position: absolute;
                             right: 15px;
                             top: 50%;
                             transform: translateY(-50%) rotate(-90deg)
                         }
                     }
-                    .has-mega{
-                        .mega__wrap{
+
+                    .has-mega {
+                        .mega__wrap {
                             overflow-y: auto;
                             top: 0;
                             box-shadow: none;
                             padding: 2rem 0;
                             height: 100%;
-                            &:before{
+
+                            &:before {
                                 display: none;
                             }
-                            .mega__back-link{
+
+                            .mega__back-link {
                                 display: block;
                                 padding: 1rem 0;
                                 margin-bottom: 2rem;
                                 border-bottom: 1px solid #f5f5f5;
-                                span.fal{
+
+                                span.fal {
                                     font-size: 1.3rem;
                                     color: var(--main)
                                 }
                             }
-                            .mega__row{
-                                &>div{
-                                    padding: 0!important;
+
+                            .mega__row {
+                                &>div {
+                                    padding: 0 !important;
                                 }
                             }
-                            .mega__right{
+
+                            .mega__right {
                                 background: none;
                             }
-                            &.show{
-                                display: block;
+
+                            &.show {
+
+                                opacity: 1;
+                                pointer-events: initial;
                             }
-                            &.mega__1{
-                                .mega__right{
+
+                            &.mega__1 {
+                                .mega__right {
                                     position: absolute;
                                     top: 0;
                                     left: 0;
                                     height: 100%;
-                                    padding: 0px 10px!important;
+                                    padding: 0px 10px !important;
                                     display: none;
                                 }
                             }
-                            &.mega__2{
-                                .mega__2-item{
-                                    .img{
+
+                            &.mega__2 {
+                                .mega__2-item {
+                                    .img {
                                         display: none;
                                     }
-                                    .text{
+
+                                    .text {
                                         font-size: 1.8rem;
                                         position: relative;
-                                        span{
+
+                                        span {
                                             position: absolute;
                                             top: 50%;
                                             right: 0;
@@ -580,43 +804,53 @@
                                         }
                                     }
                                 }
-                                .mega__right{
-                                    .mega__2-item{
-                                        a{
+
+                                .mega__right {
+                                    .mega__2-item {
+                                        a {
                                             padding-left: 0;
-                                            .text{
+
+                                            .text {
                                                 font-size: 1.6rem;
                                             }
                                         }
                                     }
                                 }
                             }
-                            &.mega__3{
-                                h3{
+
+                            &.mega__3 {
+                                h3 {
                                     margin-bottom: 1rem;
                                 }
-                                .mega__service{
+
+                                .mega__service {
                                     position: relative;
                                     padding: 1.5rem 0;
-                                    .isvg{
+
+                                    .isvg {
                                         display: none;
                                     }
-                                    .text{
+
+                                    .text {
                                         margin-left: 0;
                                     }
-                                    .fal{
+
+                                    .fal {
                                         position: absolute;
                                         top: 50%;
                                         right: 20px;
                                         transform: translateY(-50%)
                                     }
                                 }
-                                .mega__right{
+
+                                .mega__right {
                                     margin-top: 2rem;
-                                    ul{
-                                        a{
+
+                                    ul {
+                                        a {
                                             position: relative;
-                                            span{
+
+                                            span {
                                                 position: absolute;
                                                 right: 20px;
                                                 top: 50%;
@@ -626,8 +860,9 @@
                                     }
                                 }
                             }
-                            &.mega__4{
-                                .mega__extra-menu{
+
+                            &.mega__4 {
+                                .mega__extra-menu {
                                     margin-bottom: 3rem;
                                 }
                             }
@@ -636,23 +871,28 @@
                 }
             }
         }
-        @media(min-width: 768px){
-            .toggle-mobile-btn{
+
+        @media(min-width: 768px) {
+            .toggle-mobile-btn {
                 display: none;
             }
-            >ul{
-                display: flex!important;
+
+            >ul {
+                display: flex !important;
             }
         }
     }
-    .header__search{
+
+    .header__search {
         height: 55px;
         position: relative;
         border-bottom: 1px solid map-get($color, silver);
-        input{
+
+        input {
             display: none;
         }
-        .text{
+
+        .text {
             padding-right: 25px;
             position: absolute;
             top: 50%;
@@ -662,14 +902,16 @@
             cursor: pointer;
             z-index: 22;
         }
-        .search-input-icon{
+
+        .search-input-icon {
             position: absolute;
             top: 50%;
             right: 0;
             transform: translateY(-50%);
             color: var(--main)
         }
-        .search-input-close{
+
+        .search-input-close {
             position: absolute;
             top: 50%;
             right: 0;
@@ -683,41 +925,50 @@
             font-size: 2.2rem;
             display: none;
         }
-        input{
+
+        input {
             margin-left: 25px;
             width: 90%;
             border: none;
             padding: .5rem;
             outline: none;
         }
-        &.active{
+
+        &.active {
             background: #fff;
             // border-bottom: 1px solid map-get($color, silver);
             width: 100%;
             position: absolute;
             display: flex;
             align-items: center;
-            input{
+
+            input {
                 display: block;
             }
-            .search-input-icon{
+
+            .search-input-icon {
                 left: 0;
                 right: auto;
             }
-            .search-input-close{
+
+            .search-input-close {
                 display: block;
             }
-            .text{
+
+            .text {
                 display: none;
             }
         }
-        @media(max-width: 767.98px){
+
+        @media(max-width: 767.98px) {
             height: auto;
             border-bottom: 0;
-            .text{
+
+            .text {
                 opacity: 0;
             }
-            .search-input-close{
+
+            .search-input-close {
                 height: auto;
             }
         }

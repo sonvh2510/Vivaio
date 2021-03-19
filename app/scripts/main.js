@@ -21,6 +21,65 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     }
+    const megaNewsSlide = new Swiper('.header__1 .mega__newsSlide .swiper-container', {
+        slidesPerView: 1,
+        speed: 1000,
+        loop: true,
+        spaceBetween: 30,
+        autoplay: {
+            disableOnInteraction: false,
+            delay: 4000,
+        },
+        navigation: {
+            nextEl: '.header__1 .mega__newsSlide .swiper-next'
+        },
+        pagination: {
+            el: '.header__1 .mega__newsSlide .swiper-pagination',
+            clickable: true,
+            type: 'bullets',
+            dynamicMainBullets: true,
+        },
+    });
+    const partnershipSlider = new Swiper('.partners__section-1 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: {
+            el: '.partners__section-1 .swiper-pagination-custom',
+            clickable: true,
+            type: 'bullets',
+            dynamicMainBullets: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerview: 2
+            },
+            1025: {
+                slidesPerView: 3,
+            },
+        },
+    });
+    const pciSlider = new Swiper('.partners__section-3 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        pagination: {
+            el: '.partners__section-3 .swiper-pagination-custom',
+            clickable: true,
+            type: 'bullets',
+            dynamicMainBullets: true,
+        },
+        navigation: {
+            nextEl: '.partners__section-3 .swiper-next',
+            prevEl: '.partners__section-3 .swiper-prev'
+        },
+        breakpoints: {
+            768: {
+                slidesPerview: 2
+            },
+            1025: {
+                slidesPerView: 4,
+            },
+        },
+    });
 
     const footerHelpSlider = new Swiper('.footer__help .swiper-container', {
         slidesPerView: 2,
@@ -166,6 +225,24 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     );
 
+    const galleryThumbs = new Swiper('.indexSection .gallery-thumbs', {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+    const galleryTop = new Swiper('.indexSection .gallery-top', {
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.indexSection .swiper-next',
+            prevEl: '.indexSection .swiper-prev'
+        },
+        thumbs: {
+            swiper: galleryThumbs
+        }
+    });
+
     const contactTab = new Tab('.tab-container');
 
     if (document.querySelector('.date-picker')) {
@@ -231,10 +308,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    $('.indexSection .indexSectionZoom').on('mousemove', (e) => {
+        let zoomer = e.currentTarget;
+        let offsetX
+        let offsetY
+        e.offsetX ? offsetX = e.offsetX : offsetX = e.touches[0].pageX
+        e.offsetY ? offsetY = e.offsetY : offsetY = e.touches[0].pageX
+        let x = (offsetX / zoomer.offsetWidth) * 100
+        let y = (offsetY / zoomer.offsetHeight) * 100
+        zoomer.style.backgroundPosition = x + "% " + y + "%";
+    })
+
+    $('.banner__img--showSlider').on('click', () => {
+        $('.indexBanner').addClass('d-none')
+        $('.indexBannerPupup').removeClass('d-none')
+    })
+    $('.closePupup ').on('click', () => {
+        $('.indexBanner').removeClass('d-none')
+        $('.indexBannerPupup').addClass('d-none')
+    })
+
     // Scroll Sticky
     if ($('#blog-page .blog__newsletter').length) {
         var blogNewsLetterOffset = $("#blog-page .blog__newsletter").offset().top
     }
+
     if (window.innerWidth > 1025) {
         $('[mega-target]').each(function () {
             const target = $(this).attr('mega-target')
@@ -242,11 +340,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const _this = $(this)
             _this.on('mouseenter', function (e) {
                 e.preventDefault();
-                $(`[mega-target]`).each(function(index){
+                $(`[mega-target]`).each(function (index) {
                     $(this).removeClass('active');
                 })
                 _this.addClass('active')
-                $(`[mega-menu]`).each(function(index){
+                $(`[mega-menu]`).each(function (index) {
                     $(this).hide();
                 })
                 menuWrapper.show()
@@ -258,10 +356,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         $('.has-mega .container').on('mouseleave', function (e) {
             e.preventDefault();
-            $(`[mega-menu]`).each(function(){
+            $(`[mega-menu]`).each(function () {
                 $(this).hide();
             })
-            $(`[mega-target]`).each(function(index){
+            $(`[mega-target]`).each(function (index) {
                 $(this).removeClass('active');
             })
         })
