@@ -264,3 +264,20 @@
 		}
 	}
 }
+
+.events-group{
+	padding-top: 30px;
+	.event{
+		img{
+			width: 100%;
+		}
+		h4{
+			padding: 10px 0 5px 0;
+			color: #00a335;
+			text-align: justify-all;
+		}
+		.time{
+			color: #2b2b2b;
+		}
+	}
+}
