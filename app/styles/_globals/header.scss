@@ -87,7 +87,9 @@
     .header__logo {
         width: 144px;
         height: 30px;
-
+        div{
+            height: 100%;
+        }
         svg {
             width: 100%;
             height: 100%;
@@ -548,6 +550,9 @@
 
                     &.mega__3 {
                         .mega__service {
+                            .isSVG{
+                                display: inline;
+                            }
                             span {
                                 margin-left: 0;
                             }
