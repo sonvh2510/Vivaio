@@ -1,9 +1,49 @@
 import { getSvg, dropdownToggle, Tab } from './utils';
-
+const ajaxContactForm = () => {
+    $(".contact-section form .btn.btn--main").on("click", function (e) {
+        e.preventDefault();
+        const url = $(this).attr("data-url");
+        const formData = new FormData();
+        $(this).parents('form').find(".form__group input").each(function (el) {
+            console.log($(this))
+            const name = $(this).attr("name");
+            const val = $(this).val();
+            formData.append(name, val);
+        });
+        $(this).parents('form').find(".form__group textarea").each(function (el) {
+            const name = $(this).attr("name");
+            const val = $(this).val();
+            formData.append(name, val);
+        });
+        const recaptcha = $(".g-recaptcha");
+        formData.append(recaptcha.attr("name"), recaptcha.val());
+        if ($(".contact-section form").valid() === true) {
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                beforeSend: function () {
+                    $(this).attr('disabled', 'disabled');
+                },
+                success: function (res) {
+                    if (res.Code == 200) {
+                        alert(`${res.Message}`);
+                        window.location.reload();
+                    }
+                    else {
+                        alert(res.Message);
+                    }
+                },
+            });
+        }
+    });
+};
 document.addEventListener('DOMContentLoaded', () => {
     getSvg();
     dropdownToggle();
-
+    ajaxContactForm()
     if (document.querySelectorAll('.page-banner-1 .swiper-slide').length > 1) {
         const bannerSlider = new Swiper('.page-banner-1 .swiper-container', {
             slidesPerView: 1,
@@ -225,24 +265,29 @@ document.addEventListener('DOMContentLoaded', () => {
         },
     );
 
-    const galleryThumbs = new Swiper('.indexSection .gallery-thumbs', {
+    const productDetailPopupThumb = new Swiper('.indexBannerPopup .gallery-thumbs', {
         spaceBetween: 10,
         slidesPerView: 4,
         freeMode: true,
         watchSlidesVisibility: true,
         watchSlidesProgress: true,
+        observer: true,
+        observeParents: true
     });
-    const galleryTop = new Swiper('.indexSection .gallery-top', {
+    const productDetailPopupTop = new Swiper('.indexBannerPopup .gallery-top', {
         spaceBetween: 10,
         navigation: {
-            nextEl: '.indexSection .swiper-next',
-            prevEl: '.indexSection .swiper-prev'
+            nextEl: '.indexBannerPopup .swiper-next',
+            prevEl: '.indexBannerPopup .swiper-prev'
         },
+        observer: true,
+        observeParents: true,
         thumbs: {
-            swiper: galleryThumbs
-        }
+            swiper: productDetailPopupThumb
+        },
+        allowTouchMove: false
     });
-
+    
     const contactTab = new Tab('.tab-container');
 
     if (document.querySelector('.date-picker')) {
@@ -321,17 +366,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('.banner__img--showSlider').on('click', () => {
         $('.indexBanner').addClass('d-none')
-        $('.indexBannerPupup').removeClass('d-none')
+        $('.indexBannerPopup').removeClass('d-none')
     })
-    $('.closePupup ').on('click', () => {
+    $('.closePopup ').on('click', () => {
         $('.indexBanner').removeClass('d-none')
-        $('.indexBannerPupup').addClass('d-none')
+        $('.indexBannerPopup').addClass('d-none')
     })
 
-    // Scroll Sticky
-    if ($('#blog-page .blog__newsletter').length) {
-        var blogNewsLetterOffset = $("#blog-page .blog__newsletter").offset().top
-    }
+    $('#result-help-and-download-page .form__search button').on('click',function(e){
+        e.preventDefault()
+        var value = $(this).siblings().find('input').val().trim().toLowerCase()
+        // if(value){
+            $(this).parents('.tab-content').find('.dropdown__label').each(function(e){
+                // console.log($(this).html().toLowerCase().indexOf(value) > -1 ? `show ${e}` : `hide ${e}`)
+                $(this).html().toLowerCase().indexOf(value) > -1 ? $(this).show() : $(this).hide()
+            })
+        // }
+    })
 
     if (window.innerWidth > 1025) {
         $('[mega-target]').each(function () {
@@ -400,6 +451,19 @@ document.addEventListener('DOMContentLoaded', () => {
     $(document).on('ready', function () {
         if ($('#blog-page').length) {
             scrollStiky()
+        }
+    })
+    $('.productSubCategories .productList__applyFilter').on('click', function(e){
+        e.preventDefault()
+        var value = $(this).parents('.productSubCategories').find('input[name="Subcategory"]:checked').siblings('span').text().split(' ').join('').toLowerCase()
+        if(value){
+            $.ajax({
+                url: `?storage=${value}`,
+                // data: { isajax: true },
+                success: function(data) {
+                    console.log('sucess')
+                }
+            });
         }
     })
 });

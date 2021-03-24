@@ -1,0 +1,85 @@
+.form-filter-simple-banner.contact-simple-banner
+	.img
+		img.object-cover(src="/images/banners/form-filter.png")
+	.caption.text-center
+		.container
+			h1.fs-22.fw-300 Contact
+			p.fs-20.mt-1 We are here to help you, contact us.
+.contact-section.pd-section
+	.container
+		.row.tab-container
+			.col-md-3
+				.tab-toggle-item-list
+					.tab-toggle-for.active
+						a(href="contact-us.html")
+							.d-flex.align-items-center
+								.img
+									+svg("/images/message.svg")
+								.caption
+									p.fs-16 Contact Us
+					.tab-toggle-for
+						a(href="call-center.html")
+							.d-flex.align-items-center
+								.img
+									+svg("/images/attendance.svg")
+								.caption
+									p.fs-16 Call Center
+					.tab-toggle-for
+						a(href="technical-support.html")
+							.d-flex.align-items-center
+								.img
+									+svg("/images/technical.svg")
+								.caption
+									p.fs-16 Technical Support
+			.col-md-1
+			.col-md-8
+				.tab-content
+					h2.fs-32.fw-300.mb-3 Send your message
+					form.contact-form-message
+						.row
+							.form__group.col-sm-12.mb-3
+								input.form__control(placeholder="Fullname")
+							.form__group.col-sm-12.mb-3
+								input.form__control(placeholder="Type your email")
+							.form__group.col-sm-6.mb-3
+								input.form__control(placeholder="CPF/CNPJ")
+							.form__group.col-sm-6.mb-3
+								select.form__control
+									option Sector
+									option Value 1
+									option Value 1
+									option Value 1
+									option Value 1
+									option Value 1
+							.form__group.col-sm-6.mb-3
+								input.form__control(placeholder="CEP/Zip code")
+							.form__group.col-sm-6.mb-3
+								select.form__control
+									option Parents
+									option Value 1
+									option Value 1
+									option Value 1
+									option Value 1
+									option Value 1
+							.form__group.col-sm-8.mb-3
+								input.form__control(placeholder="City")
+							.form__group.col-sm-4.mb-3
+								select.form__control
+									option State
+									option Value 1
+									option Value 1
+									option Value 1
+									option Value 1
+									option Value 1
+							.form__group.col-sm-12.mb-4
+								input.form__control(placeholder="Subject matter")
+							.form__group.col-sm-12.mb-3
+								label.form__label Message
+								textarea.form__control(placeholder="Subject matter")
+							.form__group.col-sm-12.mb-3
+								label.checkbox--custom
+									input(type="checkbox", name="TermAgree")
+									span I agree to send my data to Intelbras to return the contact message.
+							.form__group.col-sm-12
+								button.btn.btn--main Submit
+									span.btn__icon--right.fal.fa-chevron-right

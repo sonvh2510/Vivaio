@@ -1,0 +1,44 @@
+.indexSection
+	.container
+		.row.no-gutters.indexBanner.direction-flex
+			.col-md-5 
+				.banner__caption.banner-dark-gray.fullsize
+					.banner__content-detail.clearfix
+						p.hero-title.mb-3.fs-18 HDs WD Purple™
+						h2.fs-32.fw-300 Discos rígidos para CFTV
+						.mt-1
+							span.fs-16.fw-300 Desenvolvidos especialmente para uso em equipamentos de CFTV. Evitam perdas de imagem e reduzem o custo do projeto
+						.mt-2.d-flex.align-items-center
+							p.fs-18.fw-300 Colors
+							.product__colors.ml-2(style="border:1px solid black; width: 30px; height: 30px; border-radius: 50%;")
+								.in(style="background-color: black; border-radius: 50%; width: 15px; height: 15px; margin-left: 6px; margin-top: 6px;")
+							.product__colors.ml-2(style="border:1px solid white; width: 30px; height: 30px; border-radius: 50%;")
+								.in(style="background-color: white; border-radius: 50%; width: 15px; height: 15px; margin-left: 6px; margin-top: 6px;")
+						a.btn.btn--white--outline.mt-4(href='https://youtu.be/vXgzLqlGZuY')
+							span.btn__text View Gallery
+							span.btn__icon--right.fal.fa-chevron-right
+			.col-md-7
+				.banner__img.banner__img--showSlider
+					img.object-cover.lazyload.blur-up(data-src='/images/banners/2.jpg' alt='')
+		.row.indexBannerPupup.d-none
+			.col 
+				.slide
+					.swiper-container.gallery-top
+						.swiper-wrapper
+							.swiper-slide
+								.box-img
+									.indexSectionZoom(style='background:url(/images/WD_Purple_SurveillanceBigsize.png')
+										img(src='/images/WD_Purple_SurveillanceBigsize.png' alt='')
+					.swiper-navigation 
+						.swiper-prev 
+							i.fal.fa-chevron-left 
+						.swiper-next 
+							i.fal.fa-chevron-right
+					.closePupup 
+						i.fal.fa-times
+				.swiper-container.gallery-thumbs
+					.swiper-wrapper 
+						.swiper-slide
+							img.object-cover(src='/images/WD_Purple_Surveillance.png' alt='')
+		
+			
