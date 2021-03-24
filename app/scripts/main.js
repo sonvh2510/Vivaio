@@ -382,7 +382,8 @@ document.addEventListener('DOMContentLoaded', () => {
         zoomer.style.backgroundPosition = x + "% " + y + "%";
     })
 
-    $('.banner__img--showSlider').on('click', () => {
+    $('.banner__img--showSlider, .banner__content-detail .btn').on('click', (e) => {
+        e.preventDefault()
         $('.indexBanner').addClass('d-none')
         $('.indexBannerPopup').removeClass('d-none')
     })
