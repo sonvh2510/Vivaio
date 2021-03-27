@@ -1,23 +1,15 @@
 import { getSvg, dropdownToggle, Tab } from './utils';
 const ajaxContactForm = () => {
-    $(".contact-section form .btn.btn--main").on("click", function (e) {
+    $(".contact-form-message .btn--main").on("click", function (e) {
         e.preventDefault();
         const url = $(this).attr("data-url");
         const formData = new FormData();
-        $(this).parents('form').find(".form__group input").each(function (el) {
-            console.log($(this))
+        $('.contact-form-message .form__group [name]').each(function (el) {
             const name = $(this).attr("name");
             const val = $(this).val();
             formData.append(name, val);
         });
-        $(this).parents('form').find(".form__group textarea").each(function (el) {
-            const name = $(this).attr("name");
-            const val = $(this).val();
-            formData.append(name, val);
-        });
-        const recaptcha = $(".g-recaptcha");
-        formData.append(recaptcha.attr("name"), recaptcha.val());
-        if ($(".contact-section form").valid() === true) {
+        if ($(".contact-form-message").valid()) {
             $.ajax({
                 url: url,
                 type: "POST",
@@ -40,9 +32,23 @@ const ajaxContactForm = () => {
         }
     });
 };
+
+const activeMegaMenuOnMobile = () => {
+	$('body').on('click', '.has-mega>a', function(e){
+		e.preventDefault();
+		$(this).addClass('active')
+		$(this).siblings('.mega__wrap').addClass('active');
+	})
+	$('body').on('click', '.mega__back-link', function(e) {
+		e.preventDefault();
+		$(this).parents('.mega__wrap').removeClass('active')
+	})
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     getSvg();
     dropdownToggle();
+	activeMegaMenuOnMobile();
     ajaxContactForm()
     if (document.querySelectorAll('.page-banner-1 .swiper-slide').length > 1) {
         const bannerSlider = new Swiper('.page-banner-1 .swiper-container', {
@@ -339,7 +345,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Header Main Toggle
     $('.header__1 .header__main-menu .toggle-mobile-btn').on('click', function () {
         $(this).siblings().toggleClass('show')
-        $(this).toggleClass('active')
+        $(this).toggleClass('active');
+		$('.header__main-menu .active').each(function () {
+			$(this).removeClass('active')
+		})
     })
     $('.header__1 .header__main-menu .toggle__menu-wrap>ul>li.has__mega>a').on('click', function (e) {
         e.preventDefault()
@@ -488,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // add mega-menu attribute
     if (document.querySelector(".header__1")) {
-        document.querySelectorAll(".mega__extra-menu li").forEach(function (e, i) {
+        document.querySelectorAll(".mega__extra-menu li a").forEach(function (e, i) {
             e.setAttribute("mega-target", "mega-" + (i + 1))
         })
         document.querySelectorAll(".mega__listProduct").forEach(function (e, i) {
