@@ -382,7 +382,8 @@ document.addEventListener('DOMContentLoaded', () => {
         zoomer.style.backgroundPosition = x + "% " + y + "%";
     })
 
-    $('.banner__img--showSlider').on('click', () => {
+    $('.banner__img--showSlider, .banner__content-detail .btn').on('click', (e) => {
+        e.preventDefault()
         $('.indexBanner').addClass('d-none')
         $('.indexBannerPopup').removeClass('d-none')
     })
@@ -484,4 +485,66 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         // }
     })
+
+    // add mega-menu attribute
+    if (document.querySelector(".header__1")) {
+        document.querySelectorAll(".mega__extra-menu li").forEach(function (e, i) {
+            e.setAttribute("mega-target", "mega-" + (i + 1))
+        })
+        document.querySelectorAll(".mega__listProduct").forEach(function (e, i) {
+            e.setAttribute("mega-menu", "mega-" + (i + 1))
+        })
+        document.querySelectorAll(".mega__wrap").forEach(function (e, i) {
+            e.classList.add("mega__" + (i + 1))
+        })
+    }
+
+    // filter product by categories
+    if (document.querySelector(".main-category")) {
+        $(".main-category").trigger("change");
+        function cateChange(value) {
+            var flag = true;
+            $(".btn--main").removeClass("pointer-track");
+            $(".sub-category").find("option").each(function (i, e) {
+                if ($(e).attr("data-parent") == value) {
+                    $(e).show();
+                    if (flag) {
+                        $(".sub-category").val($(e).val());
+                        flag = false;
+                        $(".sub-category").trigger("change");
+                    }
+                }
+                else {
+                    $(e).hide();
+                }
+            })
+            if (flag) {
+                $(".sub-category").val("");
+                $(".btn--main").addClass("pointer-track");
+                $(".sub-category").trigger("change");
+            }
+        }
+
+        function subCateChange(value) {
+            var flag = true;
+            $(".btn--main").removeClass("pointer-track");
+            $(".product-filter").find("option").each(function (i, e) {
+                var arrays = $(e).attr("data-parent").split(',');
+                if (arrays.includes(value)) {
+                    $(e).show();
+                    if (flag) {
+                        $(".product-filter").val($(e).val());
+                        flag = false;
+                    }
+                }
+                else {
+                    $(e).hide();
+                }
+            })
+            if (flag) {
+                $(".product-filter").val("");
+                $(".btn--main").addClass("pointer-track")
+            }
+        }
+    }
 });
