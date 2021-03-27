@@ -418,6 +418,11 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         // }
     })
+    // Scroll Sticky
+    if ($('#blog-page .blog__newsletter').length) {
+        var blogNewsLetterOffset = $("#blog-page .blog__newsletter").offset().top
+    }
+
 
     if (window.innerWidth > 1025) {
         $('[mega-target]').each(function () {
