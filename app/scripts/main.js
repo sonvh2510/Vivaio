@@ -36,6 +36,7 @@ const ajaxContactForm = () => {
 const addClassBody = () => {
 	const className = $('#page-verify').attr('data-class');
 	$('body').addClass(className)
+	$('body').attr('id',className)
 }
 
 const activeMegaMenuOnMobile = () => {
