@@ -33,6 +33,11 @@ const ajaxContactForm = () => {
     });
 };
 
+const addClassBody = () => {
+	const className = $('#page-verify').attr('data-class');
+	$('body').addClass(className)
+}
+
 const activeMegaMenuOnMobile = () => {
 	$('body').on('click', '.has-mega>a', function(e){
 		e.preventDefault();
@@ -46,6 +51,7 @@ const activeMegaMenuOnMobile = () => {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+	addClassBody()
     getSvg();
     dropdownToggle();
 	activeMegaMenuOnMobile();
