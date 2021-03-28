@@ -33,6 +33,22 @@ const ajaxContactForm = () => {
 	});
 };
 
+const switchLanguage = () => {
+	const currentLanguage = document.querySelector("html").getAttribute("lang");
+	const activeHtml = document.querySelector(".header__language-active");
+	activeHtml.innerHTML = document.querySelector(".language .item[data-language=" + currentLanguage + "]").innerHTML;
+	$(activeHtml).find(".text").addClass("mx-1")
+	$(activeHtml).append("<span class=\"fal fa-chevron-down\"></span>")
+
+    $(".language .item").on("click", function (e) {
+		e.preventDefault();
+		const language = $(this).attr("data-language");
+		
+        var originalUrl = window.location;
+        window.location = "/_common-settings/ChangeCulture?culture=" + language + "&url=" + originalUrl;
+	});
+};
+
 const addClassBody = () => {
 	const className = $('#page-verify').attr('data-class');
 	$('body').addClass(className);
@@ -102,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	dropdownToggle();
 	activeMegaMenuOnMobile();
 	ajaxContactForm();
+	switchLanguage();
 	if (document.querySelectorAll('.page-banner-1 .swiper-slide').length > 1) {
 		const bannerSlider = new Swiper('.page-banner-1 .swiper-container', {
 			slidesPerView: 1,
