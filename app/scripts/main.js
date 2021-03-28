@@ -76,6 +76,7 @@ const eventsFilter = () => {
 			format: 'DD/MM/YYYY',
 			startDate: new Date().getTime(),
 			onSelect: function (date) {
+				let totalReCalculate = 0;
 				const dateSelected = new Date(date).getTime();
 				events.each(function (index) {
 					const _this = $(this);
@@ -85,8 +86,10 @@ const eventsFilter = () => {
 						_this.hide();
 					} else {
 						_this.show();
+						totalReCalculate+=1;
 					}
 				});
+				eventHeader.html(`${totalReCalculate} ${text}`);
 			},
 		});
 	}
