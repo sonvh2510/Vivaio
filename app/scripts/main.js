@@ -2,8 +2,8 @@ import { getSvg, dropdownToggle, Tab } from './utils';
 const ajaxContactForm = () => {
 	$('.js-form').each(function(){
 		const _form = $(this);
-		_form.find('.js-btn-submit').on('click', function (e) {
-			const _button = $(this);
+		const _button = _form.find('.js-btn-submit');
+		_button.on('click', function (e) {
 			e.preventDefault();
 			const url = _button.attr('data-url') || _button.attr('action');
 			const method = _button.attr('data-method') || _button.attr('method');
