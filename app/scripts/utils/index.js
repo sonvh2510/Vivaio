@@ -115,7 +115,9 @@ class Tab {
 	}
 
 	activeFirstTab() {
-		this.navigationItems[0].click();
+		if (this.navigationItems.length > 0) {
+			this.navigationItems[0].click();
+		}
 	}
 
 	selectHandler(select) {
