@@ -40,21 +40,23 @@ const switchLanguage = () => {
 	const curLang = document.querySelector(
 		`.language .item[data-language="${currentLanguage}"]`,
 	);
-	activeHtml.innerHTML = curLang.innerHTML;
-	$(activeHtml).find('.text').addClass('mx-1');
-	$(activeHtml).append('<span class="fal fa-chevron-down"></span>');
+	if (activeHtml && curLang) {
+		activeHtml.innerHTML = curLang.innerHTML;
+		$(activeHtml).find('.text').addClass('mx-1');
+		$(activeHtml).append('<span class="fal fa-chevron-down"></span>');
 
-	$('.language .item').on('click', function (e) {
-		e.preventDefault();
-		const language = $(this).attr('data-language');
+		$('.language .item').on('click', function (e) {
+			e.preventDefault();
+			const language = $(this).attr('data-language');
 
-		var originalUrl = window.location;
-		window.location =
-			'/_common-settings/ChangeCulture?culture=' +
-			language +
-			'&url=' +
-			originalUrl;
-	});
+			var originalUrl = window.location;
+			window.location =
+				'/_common-settings/ChangeCulture?culture=' +
+				language +
+				'&url=' +
+				originalUrl;
+		});
+	}
 };
 
 const addClassBody = () => {
@@ -683,17 +685,16 @@ document.addEventListener('DOMContentLoaded', () => {
 				clearTimeout(filterTimerout);
 			}
 			filterTimerout = setTimeout(() => {
-				const value = e.currentTarget.value;
+				const valueLowercase = e.currentTarget.value.toLowerCase();
 				$(this)
 					.parents('.row')
 					.find('.section__dropdown')
 					.each(function () {
-						if (
-							$(this)
-								.find('.dropdown__heading')
-								.text()
-								.includes(value)
-						) {
+						const text = $(this)
+							.find('.dropdown__heading')
+							.text()
+							.toLowerCase();
+						if (text.includes(valueLowercase)) {
 							$(this).show();
 						} else {
 							$(this).hide();
