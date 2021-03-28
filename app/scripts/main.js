@@ -678,13 +678,12 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 		let filterTimerout;
-
-		$('.tab-content .form__search input').on('change', function () {
+		$('.tab-content .form__search input').on('keyup', function (e) {
 			if (filterTimerout) {
 				clearTimeout(filterTimerout);
 			}
 			filterTimerout = setTimeout(() => {
-				const value = $(this).val();
+				const value = e.currentTarget.value;
 				$(this)
 					.parents('.row')
 					.find('.section__dropdown')
