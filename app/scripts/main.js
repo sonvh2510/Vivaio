@@ -457,6 +457,23 @@ document.addEventListener('DOMContentLoaded', () => {
 		var blogNewsLetterOffset = $('#blog-page .blog__newsletter').offset()
 			.top;
 	}
+	
+	// add mega-menu attribute
+	if (document.querySelector('.header__1')) {
+		document
+			.querySelectorAll('.mega__extra-menu li a')
+			.forEach(function (e, i) {
+				e.setAttribute('mega-target', 'mega-' + (i + 1));
+			});
+		document
+			.querySelectorAll('.mega__listProduct')
+			.forEach(function (e, i) {
+				e.setAttribute('mega-menu', 'mega-' + (i + 1));
+			});
+		document.querySelectorAll('.mega__wrap').forEach(function (e, i) {
+			e.classList.add('mega__' + (i + 1));
+		});
+	}
 
 	if (window.innerWidth > 1025) {
 		$('[mega-target]').each(function () {
@@ -541,23 +558,6 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 		// }
 	});
-
-	// add mega-menu attribute
-	if (document.querySelector('.header__1')) {
-		document
-			.querySelectorAll('.mega__extra-menu li a')
-			.forEach(function (e, i) {
-				e.setAttribute('mega-target', 'mega-' + (i + 1));
-			});
-		document
-			.querySelectorAll('.mega__listProduct')
-			.forEach(function (e, i) {
-				e.setAttribute('mega-menu', 'mega-' + (i + 1));
-			});
-		document.querySelectorAll('.mega__wrap').forEach(function (e, i) {
-			e.classList.add('mega__' + (i + 1));
-		});
-	}
 
 	// filter product by categories
 	if (document.querySelector('.main-category')) {
