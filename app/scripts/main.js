@@ -42,9 +42,9 @@ const addClassBody = () => {
 const moveSomething2Somewhere = () => {
 	if (window.innerWidth < 1025) {
 		const extraMenu = $('.header__main-menu .header__helper-extra-menu');
-		const mainMenuWrapper = extraMenu.siblings('.d-flex')
+		const mainMenuWrapper = extraMenu.siblings('.d-flex');
 		const items = extraMenu.find('li');
-		items.appendTo(mainMenuWrapper)
+		items.appendTo(mainMenuWrapper);
 	}
 };
 
@@ -58,6 +58,38 @@ const activeMegaMenuOnMobile = () => {
 		e.preventDefault();
 		$(this).parents('.mega__wrap').removeClass('active');
 	});
+};
+
+const eventsFilter = () => {
+	const eventHeader = $('.about-event-header p');
+	const events = $('.events-group .event');
+	const total = events.length;
+	const text = eventHeader
+		.text()
+		.split(' ')
+		.find((i) => isNaN(i));
+	eventHeader.html(`${total} ${text}`);
+	const dateFilterInput = document.querySelector('.js-event-date-picker');
+	if (dateFilterInput) {
+		const datepicker = new Litepicker({
+			element: dateFilterInput,
+			format: 'DD/MM/YYYY',
+			startDate: new Date().getTime(),
+			onSelect: function (date) {
+				const dateSelected = new Date(date).getTime();
+				events.each(function (index) {
+					const _this = $(this);
+					const dateString = _this.find('.time').html();
+					const dateEvent = new Date(dateString).getTime();
+					if (dateEvent < dateSelected) {
+						_this.hide();
+					} else {
+						_this.show();
+					}
+				});
+			},
+		});
+	}
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			},
 		});
 	}
+	eventsFilter();
 	const megaNewsSlide = new Swiper(
 		'.header__1 .mega__newsSlide .swiper-container',
 		{
@@ -467,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		var blogNewsLetterOffset = $('#blog-page .blog__newsletter').offset()
 			.top;
 	}
-	
+
 	// add mega-menu attribute
 	if (document.querySelector('.header__1')) {
 		document
