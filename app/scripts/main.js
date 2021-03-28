@@ -3,7 +3,7 @@ const ajaxContactForm = () => {
 	$('.js-form .js-btn-submit').on('click', function (e) {
 		e.preventDefault();
 		const url = $(this).attr('data-url') || $(this).attr('action');
-		const method = $(this).attr('data-method') || $(this).attr('method')
+		const method = $(this).attr('data-method') || $(this).attr('method');
 		const formData = new FormData();
 		$('.js-form .form__group [name]').each(function (el) {
 			const name = $(this).attr('name');
@@ -39,6 +39,15 @@ const addClassBody = () => {
 	$('body').attr('id', className);
 };
 
+const moveSomething2Somewhere = () => {
+	if (window.innerWidth < 1025) {
+		const extraMenu = $('.header__main-menu .header__helper-extra-menu');
+		const mainMenuWrapper = extraMenu.siblings('.d-flex')
+		const items = extraMenu.find('li');
+		items.appendTo(mainMenuWrapper)
+	}
+};
+
 const activeMegaMenuOnMobile = () => {
 	$('body').on('click', '.has-mega>a', function (e) {
 		e.preventDefault();
@@ -52,6 +61,7 @@ const activeMegaMenuOnMobile = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+	moveSomething2Somewhere();
 	addClassBody();
 	getSvg();
 	dropdownToggle();
