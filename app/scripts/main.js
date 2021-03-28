@@ -34,18 +34,26 @@ const ajaxContactForm = () => {
 };
 
 const switchLanguage = () => {
-	const currentLanguage = document.querySelector("html").getAttribute("lang");
-	const activeHtml = document.querySelector(".header__language-active");
-	activeHtml.innerHTML = document.querySelector(".language .item[data-language=" + currentLanguage + "]").innerHTML;
-	$(activeHtml).find(".text").addClass("mx-1")
-	$(activeHtml).append("<span class=\"fal fa-chevron-down\"></span>")
+	const currentLanguage =
+		document.querySelector('html').getAttribute('lang') || 'vi';
+	const activeHtml = document.querySelector('.header__language-active');
+	const curLang = document.querySelector(
+		`.language .item[data-language="${currentLanguage}"]`,
+	);
+	activeHtml.innerHTML = curLang.innerHTML;
+	$(activeHtml).find('.text').addClass('mx-1');
+	$(activeHtml).append('<span class="fal fa-chevron-down"></span>');
 
-    $(".language .item").on("click", function (e) {
+	$('.language .item').on('click', function (e) {
 		e.preventDefault();
-		const language = $(this).attr("data-language");
-		
-        var originalUrl = window.location;
-        window.location = "/_common-settings/ChangeCulture?culture=" + language + "&url=" + originalUrl;
+		const language = $(this).attr('data-language');
+
+		var originalUrl = window.location;
+		window.location =
+			'/_common-settings/ChangeCulture?culture=' +
+			language +
+			'&url=' +
+			originalUrl;
 	});
 };
 
@@ -83,8 +91,9 @@ const eventsFilter = () => {
 	const text = eventHeader
 		.text()
 		.split(' ')
-		.find((i) => isNaN(i));
-	eventHeader.html(`${total} ${text}`);
+		.filter((i) => isNaN(i));
+	const string = [total, ...text];
+	eventHeader.html(`${string.join(' ')}`);
 	const dateFilterInput = document.querySelector('.js-event-date-picker');
 	if (dateFilterInput) {
 		const datepicker = new Litepicker({
@@ -102,7 +111,7 @@ const eventsFilter = () => {
 						_this.hide();
 					} else {
 						_this.show();
-						totalReCalculate+=1;
+						totalReCalculate += 1;
 					}
 				});
 				eventHeader.html(`${totalReCalculate} ${text}`);
@@ -624,47 +633,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// filter product by categories
 	if (document.querySelector('.main-category')) {
-		const script = document.createElement("script");
-		script.type = "text/javascript";
-		script.src = "/content/resources/js/filter.js";
+		const script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.src = '/content/resources/js/filter.js';
 		script.async = true;
-		script.dataset.cfasync = false;  
+		script.dataset.cfasync = false;
 		document.body.appendChild(script);
-		script.addEventListener("load", () => {
+		script.addEventListener('load', () => {
 			$('.main-category').trigger('change');
 		});
 	}
 
 	// filter FAQ
-	if (document.querySelector("#page-verify").getAttribute("data-class") == "result-help-and-download-page") {
-		document.querySelectorAll(".tab-content").forEach(function(eTab, i) {
-			$(eTab).find(".section__dropdown").each(function() {
-				$(eTab).find("select").append("<option>" + $(this).find(".dropdown__heading").text() + "</option>");
-			})
-		})
+	if (
+		document.querySelector('#page-verify').getAttribute('data-class') ==
+		'result-help-and-download-page'
+	) {
+		document.querySelectorAll('.tab-content').forEach(function (eTab, i) {
+			$(eTab)
+				.find('.section__dropdown')
+				.each(function () {
+					$(eTab)
+						.find('select')
+						.append(
+							'<option>' +
+								$(this).find('.dropdown__heading').text() +
+								'</option>',
+						);
+				});
+		});
 
-		$(".section__form select").on('change', function(){
+		$('.section__form select').on('change', function () {
 			const value = $(this).val();
-			$(this).parents(".row").find(".section__dropdown").each(function(){
-				if (value == $(this).find(".dropdown__heading").text()) {
-					$(this).show();
-				}
-				else {
-					$(this).hide();
-				}
-			})
-		})
+			$(this)
+				.parents('.row')
+				.find('.section__dropdown')
+				.each(function () {
+					if (value == $(this).find('.dropdown__heading').text()) {
+						$(this).show();
+					} else {
+						$(this).hide();
+					}
+				});
+		});
 
-		$(".tab-content .form__search input").on('change', function() {
-			const value = $(this).val()
-			$(this).parents(".row").find(".section__dropdown").each(function(){
-				if ($(this).find(".dropdown__heading").text().includes(value)) {
-					$(this).show();
-				}
-				else {
-					$(this).hide();
-				}
-			})
-		})
+		let filterTimerout;
+
+		$('.tab-content .form__search input').on('change', function () {
+			if (filterTimerout) {
+				clearTimeout(filterTimerout);
+			}
+			filterTimerout = setTimeout(() => {
+				const value = $(this).val();
+				$(this)
+					.parents('.row')
+					.find('.section__dropdown')
+					.each(function () {
+						if (
+							$(this)
+								.find('.dropdown__heading')
+								.text()
+								.includes(value)
+						) {
+							$(this).show();
+						} else {
+							$(this).hide();
+						}
+					});
+			}, 400);
+		});
 	}
 });
