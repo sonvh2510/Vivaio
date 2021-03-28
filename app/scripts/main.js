@@ -1,36 +1,42 @@
 import { getSvg, dropdownToggle, Tab } from './utils';
 const ajaxContactForm = () => {
-	$('.js-form .js-btn-submit').on('click', function (e) {
-		e.preventDefault();
-		const url = $(this).attr('data-url') || $(this).attr('action');
-		const method = $(this).attr('data-method') || $(this).attr('method');
-		const formData = new FormData();
-		$('.js-form .form__group [name]').each(function (el) {
-			const name = $(this).attr('name');
-			const val = $(this).val();
-			formData.append(name, val);
-		});
-		if ($('.js-form').valid()) {
-			$.ajax({
-				url: url,
-				type: method,
-				data: formData,
-				processData: false,
-				contentType: false,
-				beforeSend: function () {
-					$(this).attr('disabled', 'disabled');
-				},
-				success: function (res) {
-					if (res.Code == 200) {
-						alert(`${res.Message}`);
-						window.location.reload();
-					} else {
-						alert(res.Message);
-					}
-				},
+	$('.js-form').each(function(){
+		const _form = $(this);
+		_form.find('.js-btn-submit').on('click', function (e) {
+			const _button = $(this);
+			e.preventDefault();
+			const url = _button.attr('data-url') || _button.attr('action');
+			const method = _button.attr('data-method') || _button.attr('method');
+			const formData = new FormData();
+			_form.find('.form__group [name]').each(function (el) {
+				const _input = $(this);
+				const name = _input.attr('name');
+				const val = _input.val();
+				formData.append(name, val);
 			});
-		}
-	});
+			if (_form.valid()) {
+				$.ajax({
+					url: url,
+					type: method,
+					data: formData,
+					processData: false,
+					contentType: false,
+					beforeSend: function () {
+						_button.attr('disabled', 'disabled');
+					},
+					success: function (res) {
+						if (res.Code == 200) {
+							alert(`${res.Message}`);
+							window.location.reload();
+						} else {
+							alert(res.Message);
+						}
+					},
+				});
+			}
+		});
+	})
+	
 };
 
 const switchLanguage = () => {
