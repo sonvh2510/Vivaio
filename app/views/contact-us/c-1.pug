@@ -35,7 +35,7 @@
 			.col-md-8
 				.tab-content
 					h2.fs-32.fw-300.mb-3 Send your message
-					form.contact-form-message
+					form.contact-form-message.js-form
 						.row
 							.form__group.col-sm-12.mb-3
 								input.form__control(placeholder="Fullname")
@@ -78,8 +78,8 @@
 								textarea.form__control(placeholder="Subject matter")
 							.form__group.col-sm-12.mb-3
 								label.checkbox--custom
-									input(type="checkbox", name="TermAgree")
+									input(type="checkbox", name="TermAgree", required)
 									span I agree to send my data to Intelbras to return the contact message.
 							.form__group.col-sm-12
-								button.btn.btn--main Submit
+								button.btn.btn--main.js-btn-submit Submit
 									span.btn__icon--right.fal.fa-chevron-right
