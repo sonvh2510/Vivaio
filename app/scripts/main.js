@@ -1,12 +1,13 @@
 import { getSvg, dropdownToggle, Tab } from './utils';
 const ajaxContactForm = () => {
-	$('.js-form').each(function(){
+	$('.js-form').each(function () {
 		const _form = $(this);
 		const _button = _form.find('.js-btn-submit');
 		_button.on('click', function (e) {
 			e.preventDefault();
 			const url = _button.attr('data-url') || _button.attr('action');
-			const method = _button.attr('data-method') || _button.attr('method');
+			const method =
+				_button.attr('data-method') || _button.attr('method');
 			const formData = new FormData();
 			_form.find('.form__group [name]').each(function (el) {
 				const _input = $(this);
@@ -35,8 +36,7 @@ const ajaxContactForm = () => {
 				});
 			}
 		});
-	})
-	
+	});
 };
 
 const switchLanguage = () => {
