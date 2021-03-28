@@ -617,4 +617,37 @@ document.addEventListener('DOMContentLoaded', () => {
 			$('.main-category').trigger('change');
 		});
 	}
+
+	// filter FAQ
+	if (document.querySelector("#page-verify").getAttribute("data-class") == "result-help-and-download-page") {
+		document.querySelectorAll(".tab-content").forEach(function(eTab, i) {
+			$(eTab).find(".section__dropdown").each(function() {
+				$(eTab).find("select").append("<option>" + $(this).find(".dropdown__heading").text() + "</option>");
+			})
+		})
+
+		$(".section__form select").on('change', function(){
+			const value = $(this).val();
+			$(this).parents(".row").find(".section__dropdown").each(function(){
+				if (value == $(this).find(".dropdown__heading").text()) {
+					$(this).show();
+				}
+				else {
+					$(this).hide();
+				}
+			})
+		})
+
+		$(".tab-content .form__search input").on('change', function() {
+			const value = $(this).val()
+			$(this).parents(".row").find(".section__dropdown").each(function(){
+				if ($(this).find(".dropdown__heading").text().includes(value)) {
+					$(this).show();
+				}
+				else {
+					$(this).hide();
+				}
+			})
+		})
+	}
 });
