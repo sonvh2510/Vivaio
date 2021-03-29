@@ -709,4 +709,18 @@ document.addEventListener('DOMContentLoaded', () => {
 			}, 400);
 		});
 	}
+
+	// filter and sort product
+	if (
+		document.querySelector('#page-verify').getAttribute('data-class') ==
+		'product-sub-categories-page'
+	){
+		$("input[name=Subcategory]").on('click', function(){
+			window.location.href = $(this).attr("value")
+		})
+
+		$(".productList__sort select").on('change', function(){
+			window.location.href = window.location.pathname +  "?sort=" + $(this).val()
+		})
+	}
 });
