@@ -672,17 +672,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 		$('.section__form select').on('change', function () {
-			const value = $(this).val();
-			$(this)
-				.parents('.row')
-				.find('.section__dropdown')
-				.each(function () {
-					if (value == $(this).find('.dropdown__heading').text()) {
-						$(this).show();
-					} else {
-						$(this).hide();
-					}
-				});
+			if ($(this).find('option:selected').index() != 0) {
+				const value = $(this).val();
+				$(this)
+					.parents('.row')
+					.find('.section__dropdown')
+					.each(function () {
+						if (value == $(this).find('.dropdown__heading').text()) {
+							$(this).show();
+						} else {
+							$(this).hide();
+						}
+					});
+			}
+			else {
+				$(this)
+					.parents('.row')
+					.find('.section__dropdown').show()
+			}
 		});
 
 		let filterTimerout;
