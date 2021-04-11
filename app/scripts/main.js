@@ -62,6 +62,8 @@ const switchLanguage = () => {
 				'&url=' +
 				originalUrl;
 		});
+
+		$('.header__main-mobile .toggle__menu-wrap').append($(activeHtml).parent())
 	}
 };
 
