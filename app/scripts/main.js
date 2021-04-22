@@ -51,7 +51,7 @@ const switchLanguage = () => {
 		$(activeHtml).find('.text').addClass('mx-1');
 		$(activeHtml).append('<span class="fal fa-chevron-down"></span>');
 
-		$('.language .item').on('click', function (e) {
+		$(document).on('click', '.language .item', function (e) {
 			e.preventDefault();
 			const language = $(this).attr('data-language');
 
@@ -62,6 +62,8 @@ const switchLanguage = () => {
 				'&url=' +
 				originalUrl;
 		});
+
+		$(activeHtml).parent().clone().appendTo($('.header__main-mobile .toggle__menu-wrap'))
 	}
 };
 
@@ -132,10 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
 	moveSomething2Somewhere();
 	addClassBody();
 	getSvg();
+	switchLanguage();
 	dropdownToggle();
 	activeMegaMenuOnMobile();
 	ajaxContactForm();
-	switchLanguage();
 	if (document.querySelectorAll('.page-banner-1 .swiper-slide').length > 1) {
 		const bannerSlider = new Swiper('.page-banner-1 .swiper-container', {
 			slidesPerView: 1,
@@ -540,9 +542,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// add mega-menu attribute
 	if (document.querySelector('.header__1')) {
-		document
-			.querySelectorAll('.mega__extra-menu li a')
-			.forEach(function (e, i) {
+		$('.mega__extra-menu:first li a')
+			.each(function (i, e) {
+				e.setAttribute('mega-target', 'mega-' + (i + 1));
+			});
+		$('.mega__extra-menu:eq(1) li a')
+			.each(function (i, e) {
 				e.setAttribute('mega-target', 'mega-' + (i + 1));
 			});
 		document
@@ -672,17 +677,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 
 		$('.section__form select').on('change', function () {
-			const value = $(this).val();
-			$(this)
-				.parents('.row')
-				.find('.section__dropdown')
-				.each(function () {
-					if (value == $(this).find('.dropdown__heading').text()) {
-						$(this).show();
-					} else {
-						$(this).hide();
-					}
-				});
+			if ($(this).find('option:selected').index() != 0) {
+				const value = $(this).val();
+				$(this)
+					.parents('.row')
+					.find('.section__dropdown')
+					.each(function () {
+						if (value == $(this).find('.dropdown__heading').text()) {
+							$(this).show();
+						} else {
+							$(this).hide();
+						}
+					});
+			}
+			else {
+				$(this)
+					.parents('.row')
+					.find('.section__dropdown').show()
+			}
 		});
 
 		let filterTimerout;
