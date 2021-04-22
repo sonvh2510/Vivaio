@@ -85,8 +85,8 @@
     }
 
     .header__logo {
-        width: 144px;
-        height: 30px;
+        width: 250px;
+        height: auto;
         div{
             height: 100%;
         }
@@ -308,6 +308,9 @@
                                             border-bottom: 2px solid map-get($color, main);
                                         }
                                     }
+                                    @media (max-width: 768px) {
+                                        padding: 0 10px;
+                                    }
                                 }
 
                                 .mega__itemSolution {
@@ -434,9 +437,6 @@
 
                     .mega__extra-menu {
                         margin-bottom: 2rem;
-
-                        h2 {}
-
                         ul {
                             a {
                                 font-size: 1.5rem;
@@ -481,8 +481,6 @@
                     }
 
                     &.mega__1 {
-                        .mega__left {}
-
                         .mega__right {
                             .product {
                                 .product__url {

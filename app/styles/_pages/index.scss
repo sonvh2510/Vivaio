@@ -61,6 +61,11 @@
 			max-width: 550px;
 		}
 	}
+	@media (max-width: 480px) {
+		.banner__img {
+			height: unset;
+		}
+	}
 }
 .direction-flex{
 	flex-direction: column-reverse;
