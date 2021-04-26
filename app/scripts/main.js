@@ -115,7 +115,7 @@ const eventsFilter = () => {
 				const dateSelected = new Date(date).getTime();
 				events.each(function (index) {
 					const _this = $(this);
-					const dateString = _this.find('.time').html();
+					const dateString = _this.find('.time').attr('data-date');
 					const dateEvent = new Date(dateString).getTime();
 					if (dateEvent < dateSelected) {
 						_this.hide();
