@@ -542,13 +542,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	// add mega-menu attribute
 	if (document.querySelector('.header__1')) {
+		let flag = 0;
 		$('.mega__extra-menu:first li a')
 			.each(function (i, e) {
-				e.setAttribute('mega-target', 'mega-' + (i + 1));
+				flag += 1;
+				e.setAttribute('mega-target', 'mega-' + flag);
 			});
 		$('.mega__extra-menu:eq(1) li a')
 			.each(function (i, e) {
-				e.setAttribute('mega-target', 'mega-' + (i + 1));
+				flag += 1;
+				e.setAttribute('mega-target', 'mega-' + flag);
 			});
 		document
 			.querySelectorAll('.mega__listProduct')
