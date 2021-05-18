@@ -1,4 +1,5 @@
 import { getSvg, dropdownToggle, Tab } from './utils';
+
 const ajaxContactForm = () => {
 	$('.js-form').each(function () {
 		const _form = $(this);
@@ -63,7 +64,10 @@ const switchLanguage = () => {
 				originalUrl;
 		});
 
-		$(activeHtml).parent().clone().appendTo($('.header__main-mobile .toggle__menu-wrap'))
+		$(activeHtml)
+			.parent()
+			.clone()
+			.appendTo($('.header__main-mobile .toggle__menu-wrap'));
 	}
 };
 
@@ -163,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			speed: 1000,
 			loop: true,
 			spaceBetween: 30,
+			observer: true,
+			observeParents: true,
 			autoplay: {
 				disableOnInteraction: false,
 				delay: 4000,
@@ -543,16 +549,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	// add mega-menu attribute
 	if (document.querySelector('.header__1')) {
 		let flag = 0;
-		$('.mega__extra-menu:first li a')
-			.each(function (i, e) {
-				flag += 1;
-				e.setAttribute('mega-target', 'mega-' + flag);
-			});
-		$('.mega__extra-menu:eq(1) li a')
-			.each(function (i, e) {
-				flag += 1;
-				e.setAttribute('mega-target', 'mega-' + flag);
-			});
+		$('.mega__extra-menu:first li a').each(function (i, e) {
+			flag += 1;
+			e.setAttribute('mega-target', 'mega-' + flag);
+		});
+		$('.mega__extra-menu:eq(1) li a').each(function (i, e) {
+			flag += 1;
+			e.setAttribute('mega-target', 'mega-' + flag);
+		});
 		document
 			.querySelectorAll('.mega__listProduct')
 			.forEach(function (e, i) {
@@ -686,17 +690,16 @@ document.addEventListener('DOMContentLoaded', () => {
 					.parents('.row')
 					.find('.section__dropdown')
 					.each(function () {
-						if (value == $(this).find('.dropdown__heading').text()) {
+						if (
+							value == $(this).find('.dropdown__heading').text()
+						) {
 							$(this).show();
 						} else {
 							$(this).hide();
 						}
 					});
-			}
-			else {
-				$(this)
-					.parents('.row')
-					.find('.section__dropdown').show()
+			} else {
+				$(this).parents('.row').find('.section__dropdown').show();
 			}
 		});
 
@@ -729,13 +732,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (
 		document.querySelector('#page-verify').getAttribute('data-class') ==
 		'product-sub-categories-page'
-	){
-		$("input[name=Subcategory]").on('click', function(){
-			window.location.href = $(this).attr("value")
-		})
+	) {
+		$('input[name=Subcategory]').on('click', function () {
+			window.location.href = $(this).attr('value');
+		});
 
-		$(".productList__sort select").on('change', function(){
-			window.location.href = window.location.pathname +  "?sort=" + $(this).val()
-		})
+		$('.productList__sort select').on('change', function () {
+			window.location.href =
+				window.location.pathname + '?sort=' + $(this).val();
+		});
 	}
 });
