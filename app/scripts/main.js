@@ -319,11 +319,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				576: {
 					slidesPerView: 3,
 				},
-				768: {
-					slidesPerView: 4,
-				},
 				1025: {
-					slidesPerView: 5,
+					slidesPerView: 4,
 				},
 			},
 		},
